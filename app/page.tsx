@@ -215,28 +215,28 @@ export default function HomePage() {
           <div className="space-y-4">
             {[
               {
-                question: 'How quickly can you respond to emergency roof damage?',
-                answer: 'We offer same-day emergency service for roofing damage. Call us immediately and we\'ll dispatch a team to assess and temporarily secure your roof until permanent repairs can be made.',
+                question: 'How much will a roof replacement cost?',
+                answer: 'Roof replacement costs vary based on size, materials, and complexity. Most residential roofs range from $8,000-$25,000. We provide free, detailed estimates with no obligation. Plus, we offer flexible financing options to fit your budget, and we can help maximize your insurance claim if applicable.',
               },
               {
-                question: 'Do you offer financing options for roof replacement?',
-                answer: 'Yes, we work with several financing partners to help make roof replacement affordable. We can discuss flexible payment plans during your free consultation.',
+                question: 'Will a roof replacement disrupt my daily life?',
+                answer: 'Our professional crews work efficiently to minimize disruption. Most replacements are completed in 2-4 days. We protect your property, manage debris removal, and work during reasonable hours. We\'ll provide a clear timeline upfront so you know exactly what to expect.',
               },
               {
-                question: 'What warranty do you provide on your work?',
-                answer: 'We provide a 10-year warranty on all materials and labor for roof replacements. Repairs typically come with a 5-year warranty. All warranties are documented in writing.',
+                question: 'Do I really need a new roof, or can I just repair it?',
+                answer: 'Our free inspection will help determine if repairs or replacement is best for your situation. If your roof is under 15 years old with minor damage, repairs may be sufficient. However, if it\'s aging or has extensive damage, replacement is more cost-effective long-term. We\'ll always recommend the most economical option.',
               },
               {
-                question: 'How long does a typical roof replacement take?',
-                answer: 'Most residential roof replacements take 2-4 days depending on roof size and complexity. We\'ll provide a detailed timeline during the initial inspection.',
+                question: 'What if I\'m not sure if my roof needs work?',
+                answer: 'Get a free professional inspection—no commitment required. We\'ll assess your roof\'s condition, identify any issues, and explain your options clearly. Many roof problems start small and worsen over time, so early detection can save thousands in preventive maintenance.',
               },
               {
-                question: 'Are you licensed and insured?',
-                answer: 'Yes, we are fully licensed, insured, and bonded. We carry comprehensive liability insurance and workers\' compensation to protect both you and our team.',
+                question: 'Are you really licensed and insured?',
+                answer: 'Yes, absolutely. We\'re fully licensed, insured, and bonded. All work is covered by comprehensive liability insurance and workers\' compensation. You can verify our credentials anytime, and we stand behind every project with written warranties.',
               },
               {
-                question: 'Do you work with insurance companies?',
-                answer: 'Absolutely. We regularly work with insurance companies on storm damage claims. We can help document damage and communicate directly with your insurance adjuster.',
+                question: 'Can you help with my insurance claim?',
+                answer: 'Yes, we work with insurance companies regularly on storm and damage claims. We document damage professionally, provide detailed reports, and communicate directly with your adjuster. Many customers are surprised how much their insurance covers—let us help maximize your claim.',
               },
             ].map((faq, idx) => (
               <button
