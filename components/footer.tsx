@@ -38,7 +38,12 @@ export function Footer() {
             <h4 className="font-semibold mb-4">Contact</h4>
             <p className="text-background/80 text-sm mb-2">📞 (555) 123-4567</p>
             <p className="text-background/80 text-sm mb-4">📧 info@apexroofing.com</p>
-            <Button onClick={scrollToTop} variant="outline" size="sm">
+            <Button
+              onClick={scrollToTop}
+              variant="outline"
+              size="sm"
+              className="border-background/40 bg-background text-foreground hover:bg-accent hover:text-accent-foreground"
+            >
               <ArrowUp />
               Back to Top
             </Button>
