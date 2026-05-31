@@ -242,9 +242,9 @@ export default function HomePage() {
               <button
                 key={idx}
                 onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)}
-                className="w-full text-left group"
+                className="w-full text-left group cursor-pointer"
               >
-                <div className="p-6 rounded-lg border border-border bg-card hover-lift transition-all">
+                <div className="p-6 rounded-lg border border-border bg-card hover:bg-card/80 hover-lift transition-all">
                   <div className="flex items-start justify-between gap-4">
                     <h3 className="font-semibold text-lg text-foreground group-hover:text-accent transition-colors">
                       {faq.question}
