@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Award, Users, Clock } from 'lucide-react'
@@ -24,28 +23,18 @@ export default function About() {
 
       {/* Story Section */}
       <section className="w-full py-16 sm:py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="animate-slide-up">
-              <h2 className="text-4xl font-bold mb-6 text-balance">Our Story</h2>
-              <p className="text-lg text-foreground/80 mb-4 leading-relaxed">
-                Founded in 2005, Apex Roofing began as a small family operation with a simple mission: deliver exceptional roofing solutions with unmatched customer service.
-              </p>
-              <p className="text-lg text-foreground/80 mb-4 leading-relaxed">
-                Today, we&apos;ve grown to become the most trusted roofing contractor in the region, serving thousands of satisfied customers across residential and commercial sectors.
-              </p>
-              <p className="text-lg text-foreground/80 leading-relaxed">
-                Our success is built on a foundation of quality craftsmanship, timely service, and genuine care for every project we undertake.
-              </p>
-            </div>
-            <div className="relative h-96 rounded-lg overflow-hidden hover-lift">
-              <Image
-                src="/hero-roofing.png"
-                alt="Apex Roofing team"
-                fill
-                className="object-cover"
-              />
-            </div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="animate-slide-up">
+            <h2 className="text-4xl font-bold mb-6 text-balance">Our Story</h2>
+            <p className="text-lg text-foreground/80 mb-4 leading-relaxed">
+              Founded in 2005, Apex Roofing began as a small family operation with a simple mission: deliver exceptional roofing solutions with unmatched customer service.
+            </p>
+            <p className="text-lg text-foreground/80 mb-4 leading-relaxed">
+              Today, we&apos;ve grown to become the most trusted roofing contractor in the region, serving thousands of satisfied customers across residential and commercial sectors.
+            </p>
+            <p className="text-lg text-foreground/80 leading-relaxed">
+              Our success is built on a foundation of quality craftsmanship, timely service, and genuine care for every project we undertake.
+            </p>
           </div>
         </div>
       </section>

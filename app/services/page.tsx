@@ -1,8 +1,7 @@
 import { Metadata } from 'next'
-import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { CheckCircle } from 'lucide-react'
+import { CheckCircle, ClipboardCheck, Wrench, Home as HomeIcon } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Our Services | Apex Roofing',
@@ -12,7 +11,7 @@ export const metadata: Metadata = {
 const services = [
   {
     title: 'Roof Inspections',
-    image: '/service-inspection.png',
+    icon: ClipboardCheck,
     benefits: [
       'Professional damage assessment',
       'Detailed written reports',
@@ -22,7 +21,7 @@ const services = [
   },
   {
     title: 'Roof Repairs',
-    image: '/service-repair.png',
+    icon: Wrench,
     benefits: [
       'Same-day emergency service',
       'Leak detection and fixing',
@@ -31,8 +30,8 @@ const services = [
     ],
   },
   {
-    title: 'Roof Replacement',
-    image: '/service-replacement.png',
+    title: 'Roof Replacements',
+    icon: HomeIcon,
     benefits: [
       'Complete roof installation',
       'Premium material options',
@@ -60,27 +59,21 @@ export default function Services() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8">
             {services.map((service, idx) => (
-              <div key={idx} className="group">
-                <div className="relative h-80 mb-6 rounded-lg overflow-hidden hover-lift">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
+              <div key={idx} className="group hover-lift">
+                <div className="p-8 rounded-lg border border-border bg-card text-center">
+                  <service.icon className="w-20 h-20 mx-auto mb-4 text-accent group-hover:scale-110 transition-transform" />
+                  <h2 className="text-2xl font-bold mb-6 group-hover:text-accent transition-colors">
+                    {service.title}
+                  </h2>
+                  <ul className="space-y-3 text-left">
+                    {service.benefits.map((benefit, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                        <span className="text-foreground/80">{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <h2 className="text-2xl font-bold mb-4 group-hover:text-accent transition-colors">
-                  {service.title}
-                </h2>
-                <ul className="space-y-3">
-                  {service.benefits.map((benefit, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                      <span className="text-foreground/80">{benefit}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             ))}
           </div>

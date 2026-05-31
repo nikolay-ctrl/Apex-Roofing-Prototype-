@@ -1,33 +1,28 @@
 import { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { CheckCircle, Zap, Shield } from 'lucide-react'
+import { CheckCircle, Zap, Shield, Home as HomeIcon, Wrench, ClipboardCheck } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Apex Roofing | Professional Roofing Services',
   description: 'Expert roofing services with same-day availability. Inspections, repairs, and replacements for residential and commercial properties.',
 }
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
-        <Image
-          src="/hero-roofing.png"
-          alt="Professional roofing work"
-          fill
-          priority
-          className="absolute inset-0 object-cover"
-        />
-        <div className="absolute inset-0 bg-black/40" />
+      <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-foreground via-foreground/95 to-card">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 right-20 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-3xl animate-pulse" />
+          <div className="absolute -bottom-8 left-20 w-72 h-72 bg-secondary rounded-full mix-blend-multiply filter blur-3xl animate-pulse" />
+        </div>
         
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white animate-fade-in">
-          <h1 className="text-5xl sm:text-6xl font-bold mb-6 text-balance">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-background animate-fade-in">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 text-balance">
             Premium Roofing Solutions
           </h1>
-          <p className="text-xl sm:text-2xl mb-8 text-white/90 text-balance">
+          <p className="text-xl sm:text-2xl mb-8 text-background/90 text-balance">
             30-Mile Service Radius • Same-Day Availability • Expert Installation
           </p>
           <Button
@@ -57,24 +52,18 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { title: 'Inspections', desc: 'Professional assessments', icon: '🔍', img: '/service-inspection.png' },
-              { title: 'Repairs', desc: 'Fast damage solutions', icon: '🔧', img: '/service-repair.png' },
-              { title: 'Replacements', desc: 'New roof installation', icon: '🏠', img: '/service-replacement.png' },
+              { title: 'Inspections', desc: 'Professional assessments', icon: ClipboardCheck },
+              { title: 'Repairs', desc: 'Fast damage solutions', icon: Wrench },
+              { title: 'Replacements', desc: 'New roof installation', icon: HomeIcon },
             ].map((service, idx) => (
               <Link key={idx} href="/services" className="group">
-                <div className="relative h-64 mb-4 rounded-lg overflow-hidden hover-lift">
-                  <Image
-                    src={service.img}
-                    alt={service.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
+                <div className="p-8 rounded-lg border border-border bg-card hover-lift text-center">
+                  <service.icon className="w-16 h-16 mx-auto mb-4 text-accent group-hover:scale-110 transition-transform" />
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-foreground/70">{service.desc}</p>
                 </div>
-                <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-foreground/70">{service.desc}</p>
               </Link>
             ))}
           </div>
