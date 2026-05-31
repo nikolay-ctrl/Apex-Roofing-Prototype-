@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Phone, Mail, MapPin } from 'lucide-react'
 import { useState } from 'react'
 import { AnimatedSection } from '@/components/animated-section'
+import { CtaBanner } from '@/components/cta-banner'
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', service: '', message: '' })
@@ -182,27 +183,18 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="w-full py-16 sm:py-24 bg-foreground text-background">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <AnimatedSection direction="up">
-            <h2 className="text-4xl font-bold mb-4 text-balance">Ready to transform your roof?</h2>
-            <p className="text-xl text-background/90 mb-8 text-balance">
-              Reach out today and let&apos;s discuss your roofing needs
-            </p>
-          </AnimatedSection>
-          
-          <AnimatedSection direction="up" delay={150}>
-            <Button
-              asChild
-              size="lg"
-              className="btn-glow-white font-semibold px-8 text-base h-12"
-            >
-              <Link href="tel:+15551234567">Call Now</Link>
-            </Button>
-          </AnimatedSection>
-        </div>
-      </section>
+      <CtaBanner
+        title="Ready to transform your roof?"
+        description="Reach out today and let's discuss your roofing needs"
+      >
+        <Button
+          asChild
+          size="lg"
+          className="btn-glow-accent font-semibold px-8 text-base h-12"
+        >
+          <Link href="tel:+15551234567">Call Now</Link>
+        </Button>
+      </CtaBanner>
     </>
   )
 }

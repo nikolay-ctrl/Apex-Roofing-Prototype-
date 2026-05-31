@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Award, Users, Clock } from 'lucide-react'
 import { AnimatedSection } from '@/components/animated-section'
+import { CtaBanner } from '@/components/cta-banner'
 
 export const metadata: Metadata = {
   title: 'About Us | Apex Roofing',
@@ -118,27 +119,18 @@ export default function About() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="w-full py-16 sm:py-24 bg-foreground text-background">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <AnimatedSection direction="up">
-            <h2 className="text-4xl font-bold mb-4 text-balance">Join Our Family</h2>
-            <p className="text-xl text-background/90 mb-8 text-balance">
-              Experience the Apex Roofing difference today
-            </p>
-          </AnimatedSection>
-
-          <AnimatedSection direction="up" delay={150}>
-            <Button
-              asChild
-              size="lg"
-              className="btn-glow-accent font-semibold px-8 text-base h-12"
-            >
-              <Link href="/contact">Get Started With Apex</Link>
-            </Button>
-          </AnimatedSection>
-        </div>
-      </section>
+      <CtaBanner
+        title="Join Our Family"
+        description="Experience the Apex Roofing difference today"
+      >
+        <Button
+          asChild
+          size="lg"
+          className="btn-glow-accent font-semibold px-8 text-base h-12"
+        >
+          <Link href="/contact">Get Started With Apex</Link>
+        </Button>
+      </CtaBanner>
     </>
   )
 }

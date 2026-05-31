@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { CheckCircle, ClipboardCheck, Wrench, Home as HomeIcon, FileText, Calendar, Sparkles, ChevronRight } from 'lucide-react'
 import { AnimatedSection } from '@/components/animated-section'
+import { CtaBanner } from '@/components/cta-banner'
 
 export const metadata: Metadata = {
   title: 'Our Services | Apex Roofing',
@@ -159,27 +160,18 @@ export default function Services() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="w-full py-16 sm:py-24 bg-foreground text-background">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <AnimatedSection direction="up">
-            <h2 className="text-4xl font-bold mb-4 text-balance">Ready to get started?</h2>
-            <p className="text-xl text-background/90 mb-8 text-balance">
-              Contact us today for a free consultation
-            </p>
-          </AnimatedSection>
-          
-          <AnimatedSection direction="up" delay={150}>
-            <Button
-              asChild
-              size="lg"
-              className="btn-glow-accent font-semibold px-8 text-base h-12"
-            >
-              <Link href="/contact">Claim Your Free Quote</Link>
-            </Button>
-          </AnimatedSection>
-        </div>
-      </section>
+      <CtaBanner
+        title="Ready to get started?"
+        description="Contact us today for a free consultation"
+      >
+        <Button
+          asChild
+          size="lg"
+          className="btn-glow-accent font-semibold px-8 text-base h-12"
+        >
+          <Link href="/contact">Claim Your Free Quote</Link>
+        </Button>
+      </CtaBanner>
     </>
   )
 }

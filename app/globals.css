@@ -303,4 +303,322 @@
     box-shadow: 0 0 15px rgba(255, 140, 66, 0.05);
     transition: all 0.3s ease;
   }
+
+  /* Footer — roofing-themed ambient motion */
+  @keyframes footer-shingle-drift {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 48px 24px;
+    }
+  }
+
+  @keyframes footer-glow-drift {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.35;
+    }
+    50% {
+      transform: translate(12px, -8px) scale(1.05);
+      opacity: 0.55;
+    }
+  }
+
+  @keyframes footer-shine {
+    0%,
+    100% {
+      opacity: 0.4;
+      transform: translateX(-30%);
+    }
+    50% {
+      opacity: 1;
+      transform: translateX(30%);
+    }
+  }
+
+  @keyframes footer-ridge-pulse {
+    0%,
+    100% {
+      opacity: 0.25;
+    }
+    50% {
+      opacity: 0.55;
+    }
+  }
+
+  .footer-shingles {
+    background-image: repeating-linear-gradient(
+        112deg,
+        transparent,
+        transparent 14px,
+        rgba(255, 140, 66, 0.04) 14px,
+        rgba(255, 140, 66, 0.04) 15px
+      ),
+      repeating-linear-gradient(
+        -112deg,
+        transparent,
+        transparent 14px,
+        rgba(255, 255, 255, 0.02) 14px,
+        rgba(255, 255, 255, 0.02) 15px
+      );
+    background-size: 32px 32px;
+    animation: footer-shingle-drift 28s linear infinite;
+  }
+
+  .footer-glow-orb {
+    animation: footer-glow-drift 14s ease-in-out infinite;
+  }
+
+  .footer-glow-orb-delayed {
+    animation: footer-glow-drift 18s ease-in-out infinite;
+    animation-delay: -6s;
+  }
+
+  .footer-shine-line {
+    animation: footer-shine 8s ease-in-out infinite;
+  }
+
+  .footer-ridge-glow {
+    animation: footer-ridge-pulse 6s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .footer-shingles,
+    .footer-glow-orb,
+    .footer-glow-orb-delayed,
+    .footer-shine-line,
+    .footer-ridge-glow {
+      animation: none;
+    }
+  }
+
+  /* CTA banner — light, airy contrast before dark footer */
+  @keyframes cta-light-drift {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translate(-16px, 10px) scale(1.08);
+      opacity: 0.85;
+    }
+  }
+
+  @keyframes cta-sunbeam {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 64px 64px;
+    }
+  }
+
+  @keyframes cta-sweep {
+    0% {
+      transform: translateX(-120%) skewX(-15deg);
+      opacity: 0;
+    }
+    15% {
+      opacity: 1;
+    }
+    85% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(220%) skewX(-15deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes cta-border-flow {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes cta-orange-pulse {
+    0%,
+    100% {
+      box-shadow:
+        0 0 0 1px rgba(255, 140, 66, 0.2),
+        0 0 24px rgba(255, 140, 66, 0.12),
+        inset 0 0 32px rgba(255, 140, 66, 0.04);
+      border-color: rgba(255, 140, 66, 0.25);
+    }
+    50% {
+      box-shadow:
+        0 0 0 2px rgba(255, 140, 66, 0.55),
+        0 0 48px rgba(255, 140, 66, 0.38),
+        0 0 96px rgba(255, 140, 66, 0.14),
+        inset 0 0 48px rgba(255, 140, 66, 0.08);
+      border-color: rgba(255, 140, 66, 0.65);
+    }
+  }
+
+  @keyframes cta-orbit-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes cta-side-pulse {
+    0%,
+    100% {
+      opacity: 0.35;
+      transform: scaleY(0.92);
+    }
+    50% {
+      opacity: 1;
+      transform: scaleY(1);
+    }
+  }
+
+  @keyframes cta-corner-pulse {
+    0%,
+    100% {
+      opacity: 0.45;
+      filter: drop-shadow(0 0 4px rgba(255, 140, 66, 0.3));
+    }
+    50% {
+      opacity: 1;
+      filter: drop-shadow(0 0 12px rgba(255, 140, 66, 0.75));
+    }
+  }
+
+  .cta-banner-beam {
+    background-image: repeating-linear-gradient(
+      105deg,
+      transparent,
+      transparent 40px,
+      rgba(255, 140, 66, 0.06) 40px,
+      rgba(255, 140, 66, 0.06) 41px
+    );
+    background-size: 80px 80px;
+    animation: cta-sunbeam 24s linear infinite;
+  }
+
+  .cta-banner-orb {
+    animation: cta-light-drift 12s ease-in-out infinite;
+  }
+
+  .cta-banner-orb-delayed {
+    animation: cta-light-drift 16s ease-in-out infinite;
+    animation-delay: -5s;
+  }
+
+  .cta-banner-sweep {
+    animation: cta-sweep 10s ease-in-out infinite;
+  }
+
+  .cta-banner-border-glow {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 140, 66, 0.5),
+      rgba(37, 99, 235, 0.35),
+      rgba(255, 140, 66, 0.5),
+      transparent
+    );
+    background-size: 200% 100%;
+    animation: cta-border-flow 6s ease-in-out infinite;
+  }
+
+  .cta-banner-pulse-frame {
+    border: 1px solid rgba(255, 140, 66, 0.3);
+    border-radius: 1rem;
+    animation: cta-orange-pulse 3s ease-in-out infinite;
+  }
+
+  .cta-banner-orbit {
+    border-radius: 1.125rem;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 260deg,
+      rgba(255, 140, 66, 0.85) 300deg,
+      rgba(255, 180, 100, 0.6) 330deg,
+      transparent 360deg
+    );
+    animation: cta-orbit-spin 10s linear infinite;
+    opacity: 0.55;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    padding: 2px;
+  }
+
+  .cta-banner-side-glow {
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(255, 140, 66, 0.9),
+      transparent
+    );
+    animation: cta-side-pulse 3s ease-in-out infinite;
+  }
+
+  .cta-banner-side-glow-right {
+    animation-delay: -1.5s;
+  }
+
+  .cta-banner-corner {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-color: #ff8c42;
+    border-style: solid;
+    animation: cta-corner-pulse 2.5s ease-in-out infinite;
+  }
+
+  .cta-banner-corner-tl {
+    top: 0.75rem;
+    left: 0.75rem;
+    border-width: 2px 0 0 2px;
+    border-radius: 4px 0 0 0;
+  }
+
+  .cta-banner-corner-tr {
+    top: 0.75rem;
+    right: 0.75rem;
+    border-width: 2px 2px 0 0;
+    border-radius: 0 4px 0 0;
+    animation-delay: -0.6s;
+  }
+
+  .cta-banner-corner-bl {
+    bottom: 0.75rem;
+    left: 0.75rem;
+    border-width: 0 0 2px 2px;
+    border-radius: 0 0 0 4px;
+    animation-delay: -1.2s;
+  }
+
+  .cta-banner-corner-br {
+    bottom: 0.75rem;
+    right: 0.75rem;
+    border-width: 0 2px 2px 0;
+    border-radius: 0 0 4px 0;
+    animation-delay: -1.8s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cta-banner-beam,
+    .cta-banner-orb,
+    .cta-banner-orb-delayed,
+    .cta-banner-sweep,
+    .cta-banner-border-glow,
+    .cta-banner-pulse-frame,
+    .cta-banner-orbit,
+    .cta-banner-side-glow,
+    .cta-banner-corner {
+      animation: none;
+    }
+  }
 }
