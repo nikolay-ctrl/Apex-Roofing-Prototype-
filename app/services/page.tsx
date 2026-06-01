@@ -1,9 +1,10 @@
 import { Metadata } from 'next'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { CheckCircle, ClipboardCheck, Wrench, Home as HomeIcon, FileText, Calendar, Sparkles, ChevronRight } from 'lucide-react'
+import { CheckCircle, ClipboardCheck, Wrench, Home as HomeIcon, FileText, Calendar, Sparkles } from 'lucide-react'
 import { AnimatedSection } from '@/components/animated-section'
 import { CtaBanner } from '@/components/cta-banner'
+import { ProcessSection } from '@/components/process-section'
 
 export const metadata: Metadata = {
   title: 'Our Services | Apex Roofing',
@@ -115,50 +116,7 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="w-full py-20 sm:py-28 bg-card border-y border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection direction="up">
-            <h2 className="text-4xl font-bold text-center mb-4 text-balance">Our Process</h2>
-            <p className="text-center text-foreground/70 mb-16 text-balance max-w-lg mx-auto">
-              How we deliver premium roofing results, step-by-step from start to finish
-            </p>
-          </AnimatedSection>
-          
-          <div className="grid md:grid-cols-4 gap-6">
-            {processSteps.map((item, idx) => (
-              <AnimatedSection key={idx} direction="up" delay={idx * 150} className="relative h-full">
-                <div className="group p-6 rounded-lg glow-card text-center h-full flex flex-col justify-start pt-10 min-h-[220px] relative">
-                  {/* Step badge in upper right — neon accent per plan */}
-                  <span className="absolute top-4 right-4 text-3xl font-bold font-mono text-accent/60 select-none group-hover:text-accent transition-colors duration-300">
-                    {item.step}
-                  </span>
-                  
-                  {/* Icon — glows and scales on hover */}
-                  <div className="w-12 h-12 rounded-full bg-accent/10 border border-accent/25 text-accent flex items-center justify-center mx-auto mb-4 transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_18px_rgba(255,140,66,0.45)] group-hover:border-accent/60 group-hover:bg-accent/20">
-                    <item.icon size={22} className="animate-float" style={{ animationDelay: `${idx * 0.3}s`, animationDuration: '3.5s' }} />
-                  </div>
-                  
-                  {/* Title & Description */}
-                  <h3 className="text-lg font-bold mb-2 text-foreground group-hover:text-accent transition-colors duration-300">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-foreground/70 leading-relaxed">
-                    {item.desc}
-                  </p>
-
-                  {/* Connect arrow/chevron on desktop */}
-                  {idx < 3 && (
-                    <div className="hidden lg:flex absolute top-1/2 -right-3.5 -translate-y-1/2 z-10 w-7 h-7 items-center justify-center bg-card border border-border rounded-full shadow-xs text-accent">
-                      <ChevronRight size={14} className="animate-pulse" />
-                    </div>
-                  )}
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ProcessSection steps={processSteps} />
 
       <CtaBanner
         title="Ready to get started?"
