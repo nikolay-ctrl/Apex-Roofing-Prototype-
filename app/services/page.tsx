@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { CheckCircle, ClipboardCheck, Wrench, Home as HomeIcon, FileText, Calendar, Sparkles } from 'lucide-react'
+import { CheckCircle, ClipboardCheck, Wrench, Home as HomeIcon } from 'lucide-react'
 import { AnimatedSection } from '@/components/animated-section'
 import { CtaBanner } from '@/components/cta-banner'
 import { ProcessSection } from '@/components/process-section'
@@ -41,33 +41,6 @@ const services = [
       'Warranty on all work',
       'Expert crew installation',
     ],
-  },
-]
-
-const processSteps = [
-  {
-    step: '01',
-    title: 'Assessment',
-    desc: 'Free, comprehensive roofing inspection to evaluate current state and identify issues.',
-    icon: ClipboardCheck,
-  },
-  {
-    step: '02',
-    title: 'Transparent Quote',
-    desc: 'A detailed estimate breakdown of costs, materials, and timeline with zero hidden fees.',
-    icon: FileText,
-  },
-  {
-    step: '03',
-    title: 'Flexible Schedule',
-    desc: 'We schedule the work at a time convenient for you, preparing materials and safety plans.',
-    icon: Calendar,
-  },
-  {
-    step: '04',
-    title: 'Quality Execution',
-    desc: 'Professional installation with premium cleanup, final inspection, and warranty activation.',
-    icon: Sparkles,
   },
 ]
 
@@ -116,7 +89,7 @@ export default function Services() {
         </div>
       </section>
 
-      <ProcessSection steps={processSteps} />
+      <ProcessSection />
 
       <CtaBanner
         title="Ready to get started?"

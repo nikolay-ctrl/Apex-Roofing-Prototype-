@@ -1,21 +1,48 @@
 'use client'
 
-import type { LucideIcon } from 'lucide-react'
-import { ChevronRight } from 'lucide-react'
+import {
+  Calendar,
+  ChevronRight,
+  ClipboardCheck,
+  FileText,
+  Sparkles,
+  type LucideIcon,
+} from 'lucide-react'
 import { AnimatedSection } from '@/components/animated-section'
 
-export type ProcessStep = {
+const processSteps: {
   step: string
   title: string
   desc: string
   icon: LucideIcon
-}
+}[] = [
+  {
+    step: '01',
+    title: 'Assessment',
+    desc: 'Free, comprehensive roofing inspection to evaluate current state and identify issues.',
+    icon: ClipboardCheck,
+  },
+  {
+    step: '02',
+    title: 'Transparent Quote',
+    desc: 'A detailed estimate breakdown of costs, materials, and timeline with zero hidden fees.',
+    icon: FileText,
+  },
+  {
+    step: '03',
+    title: 'Flexible Schedule',
+    desc: 'We schedule the work at a time convenient for you, preparing materials and safety plans.',
+    icon: Calendar,
+  },
+  {
+    step: '04',
+    title: 'Quality Execution',
+    desc: 'Professional installation with premium cleanup, final inspection, and warranty activation.',
+    icon: Sparkles,
+  },
+]
 
-interface ProcessSectionProps {
-  steps: ProcessStep[]
-}
-
-export function ProcessSection({ steps }: ProcessSectionProps) {
+export function ProcessSection() {
   return (
     <section className="relative w-full overflow-x-hidden py-20 sm:py-28 border-y border-border">
       <div
@@ -41,14 +68,13 @@ export function ProcessSection({ steps }: ProcessSectionProps) {
           </div>
         </AnimatedSection>
 
-        {/* Desktop flow connector */}
         <div
           className="process-flow-line hidden lg:block absolute left-[12.5%] right-[12.5%] top-[calc(50%+2rem)] h-0.5 -translate-y-1/2"
           aria-hidden
         />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-5 relative pl-5 md:pl-0">
-          {steps.map((item, idx) => {
+          {processSteps.map((item, idx) => {
             const Icon = item.icon
             const directions = ['left', 'up', 'right', 'up'] as const
 
@@ -59,7 +85,6 @@ export function ProcessSection({ steps }: ProcessSectionProps) {
                 delay={idx * 120}
                 className="relative h-full"
               >
-                {/* Mobile / tablet timeline dot */}
                 <div
                   className="lg:hidden absolute -left-1 top-8 w-3 h-3 rounded-full bg-accent process-timeline-dot z-10"
                   aria-hidden
@@ -67,7 +92,7 @@ export function ProcessSection({ steps }: ProcessSectionProps) {
 
                 <article className="process-card group relative h-full min-h-[240px] flex flex-col rounded-xl glow-card bg-card/80 backdrop-blur-sm px-6 pt-12 pb-6 text-center border border-border/80 transition-all duration-500 hover:-translate-y-1">
                   <span
-                    className={`process-step-badge absolute top-4 right-4 text-3xl font-bold font-mono text-accent/50 select-none transition-colors duration-300 group-hover:text-accent`}
+                    className="process-step-badge absolute top-4 right-4 text-3xl font-bold font-mono text-accent/50 select-none transition-colors duration-300 group-hover:text-accent"
                     style={{ animationDelay: `${idx * 0.4}s` }}
                   >
                     {item.step}
@@ -97,7 +122,7 @@ export function ProcessSection({ steps }: ProcessSectionProps) {
                     </span>
                   </div>
 
-                  {idx < steps.length - 1 && (
+                  {idx < processSteps.length - 1 && (
                     <div
                       className="hidden lg:flex absolute top-1/2 -right-3 -translate-y-1/2 z-20 w-7 h-7 items-center justify-center rounded-full bg-card border border-accent/30 text-accent shadow-sm process-connector-arrow"
                       aria-hidden
