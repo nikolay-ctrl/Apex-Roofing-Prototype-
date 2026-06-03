@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { CheckCircle, Zap, Shield, HomeIcon, Wrench, ClipboardCheck, ChevronDown, MapPin } from 'lucide-react'
+import { CheckCircle, Zap, Shield, ChevronDown, MapPin } from 'lucide-react'
 import { useState } from 'react'
 import { AnimatedSection } from '@/components/animated-section'
 import { CtaBanner } from '@/components/cta-banner'
@@ -184,18 +184,29 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { title: 'Inspections', desc: 'Professional assessments', icon: ClipboardCheck },
-              { title: 'Repairs', desc: 'Fast damage solutions', icon: Wrench },
-              { title: 'Replacements', desc: 'New roof installation', icon: HomeIcon },
+              { title: 'Inspections', desc: 'Professional assessments', image: '/service-inspection-real.jpg', position: 'center 42%' },
+              { title: 'Repairs', desc: 'Fast damage solutions', image: '/service-repair-real.jpg', position: 'center 52%' },
+              { title: 'Replacements', desc: 'New roof installation', image: '/service-replacement-real.jpg', position: 'center 48%' },
             ].map((service, idx) => (
               <AnimatedSection key={idx} direction="up" delay={idx * 150}>
                 <Link href="/services" className="group block">
-                  <div className="p-8 rounded-lg glow-card text-center">
-                    <service.icon className="w-16 h-16 mx-auto mb-4 text-accent group-hover:scale-115 transition-transform duration-300" />
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="text-foreground/70">{service.desc}</p>
+                  <div className="overflow-hidden rounded-lg glow-card text-center">
+                    <div className="relative h-40 overflow-hidden border-b border-border">
+                      <img
+                        src={service.image}
+                        alt=""
+                        className="h-full w-full object-cover opacity-40 grayscale saturate-75 contrast-125 transition-transform duration-500 group-hover:scale-105"
+                        style={{ objectPosition: service.position }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-card via-card/45 to-transparent" />
+                      <div className="absolute inset-0 bg-accent/10 mix-blend-overlay" />
+                    </div>
+                    <div className="p-8 pt-6">
+                      <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">
+                        {service.title}
+                      </h3>
+                      <p className="text-foreground/70">{service.desc}</p>
+                    </div>
                   </div>
                 </Link>
               </AnimatedSection>

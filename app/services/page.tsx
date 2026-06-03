@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { CheckCircle, ClipboardCheck, Wrench, Home as HomeIcon } from 'lucide-react'
 import { AnimatedSection } from '@/components/animated-section'
 import { CtaBanner } from '@/components/cta-banner'
 import { ProcessSection } from '@/components/process-section'
@@ -14,7 +13,8 @@ export const metadata: Metadata = {
 const services = [
   {
     title: 'Roof Inspections',
-    icon: ClipboardCheck,
+    image: '/service-inspection-real.jpg',
+    position: 'center 42%',
     benefits: [
       'Professional damage assessment',
       'Detailed written reports',
@@ -24,7 +24,8 @@ const services = [
   },
   {
     title: 'Roof Repairs',
-    icon: Wrench,
+    image: '/service-repair-real.jpg',
+    position: 'center 52%',
     benefits: [
       'Same-day emergency service',
       'Leak detection and fixing',
@@ -34,7 +35,8 @@ const services = [
   },
   {
     title: 'Roof Replacements',
-    icon: HomeIcon,
+    image: '/service-replacement-real.jpg',
+    position: 'center 48%',
     benefits: [
       'Complete roof installation',
       'Premium material options',
@@ -66,16 +68,25 @@ export default function Services() {
             {services.map((service, idx) => (
               <AnimatedSection key={idx} direction="up" delay={idx * 150}>
                 <div className="group block h-full">
-                  <div className="p-8 rounded-lg glow-card text-center h-full flex flex-col justify-between">
-                    <div>
-                      <service.icon className="w-20 h-20 mx-auto mb-6 text-accent group-hover:scale-110 transition-transform duration-300" />
+                  <div className="overflow-hidden rounded-lg glow-card h-full flex flex-col">
+                    <div className="relative h-52 overflow-hidden border-b border-border">
+                      <img
+                        src={service.image}
+                        alt=""
+                        className="h-full w-full object-cover opacity-40 grayscale saturate-75 contrast-125 transition-transform duration-500 group-hover:scale-105"
+                        style={{ objectPosition: service.position }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-card via-card/55 to-transparent" />
+                      <div className="absolute inset-0 bg-accent/10 mix-blend-overlay" />
+                    </div>
+                    <div className="p-8 text-center flex flex-1 flex-col justify-between">
                       <h2 className="text-2xl font-bold mb-6 group-hover:text-accent transition-colors">
                         {service.title}
                       </h2>
                       <ul className="space-y-4 text-left">
                         {service.benefits.map((benefit, i) => (
                           <li key={i} className="flex items-start gap-3">
-                            <CheckCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                            <span className="mt-2 h-2 w-2 rounded-full bg-accent shadow-[0_0_12px_rgba(255,140,66,0.45)] flex-shrink-0" />
                             <span className="text-foreground/80 font-medium">{benefit}</span>
                           </li>
                         ))}
