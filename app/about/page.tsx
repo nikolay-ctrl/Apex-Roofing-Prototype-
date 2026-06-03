@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Award, Users, Clock } from 'lucide-react'
 import { AnimatedSection } from '@/components/animated-section'
 import { CtaBanner } from '@/components/cta-banner'
+import { StoryTimeline } from '@/components/story-timeline'
 
 export const metadata: Metadata = {
   title: 'About Us | Apex Roofing',
@@ -14,8 +15,16 @@ export default function About() {
   return (
     <>
       {/* Header */}
-      <section className="w-full py-16 sm:py-24 bg-gradient-to-b from-card to-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative w-full overflow-hidden py-16 sm:py-24 bg-gradient-to-b from-card to-background">
+        <img
+          src="https://images.unsplash.com/photo-1521791136064-7986c2920216?fm=jpg&q=80&w=1800&auto=format&fit=crop"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover object-center opacity-45"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-card/65 via-background/45 to-background" />
+        <div className="absolute inset-0 bg-accent/10 mix-blend-overlay" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection direction="up">
             <h1 className="text-5xl font-bold mb-4 text-balance">About Apex Roofing</h1>
             <p className="text-xl text-foreground/70 text-balance">
@@ -27,19 +36,17 @@ export default function About() {
 
       {/* Story Section */}
       <section className="w-full py-16 sm:py-24 bg-background">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection direction="up">
-            <h2 className="text-4xl font-bold mb-6 text-balance">Our Story</h2>
-            <p className="text-lg text-foreground/80 mb-4 leading-relaxed">
-              Founded in 2005, Apex Roofing began as a small family operation with a simple mission: deliver exceptional roofing solutions with unmatched customer service.
-            </p>
-            <p className="text-lg text-foreground/80 mb-4 leading-relaxed">
-              Today, we&apos;ve grown to become the most trusted roofing contractor in the region, serving thousands of satisfied customers across residential and commercial sectors.
-            </p>
-            <p className="text-lg text-foreground/80 leading-relaxed">
-              Our success is built on a foundation of quality craftsmanship, timely service, and genuine care for every project we undertake.
-            </p>
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold mb-4 text-balance">Our Story</h2>
+              <p className="text-lg text-foreground/70 text-balance max-w-2xl mx-auto">
+                From a small local crew to a trusted roofing partner, Apex Roofing has grown by keeping the same promise: quality work and honest service.
+              </p>
+            </div>
           </AnimatedSection>
+
+          <StoryTimeline />
         </div>
       </section>
 
@@ -101,17 +108,46 @@ export default function About() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { name: 'Michael Torres', role: 'Founder & CEO', exp: '25+ years' },
-              { name: 'Jennifer Lee', role: 'Operations Manager', exp: '18 years' },
-              { name: 'David Martinez', role: 'Lead Technician', exp: '20 years' },
+              {
+                name: 'Michael Torres',
+                role: 'Founder & CEO',
+                image:
+                  'https://images.unsplash.com/photo-1556157382-97eda2d62296?fm=jpg&q=80&w=500&auto=format&fit=crop&crop=faces',
+                bio: 'Michael started Apex Roofing after two decades in residential construction. He leads estimates, quality standards, and long-term customer relationships.',
+              },
+              {
+                name: 'Jennifer Lee',
+                role: 'Operations Manager',
+                image:
+                  'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?fm=jpg&q=80&w=500&auto=format&fit=crop&crop=faces',
+                bio: 'Jennifer coordinates scheduling, materials, and customer updates so every project runs smoothly from inspection to final cleanup.',
+              },
+              {
+                name: 'David Martinez',
+                role: 'Lead Technician',
+                image:
+                  'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?fm=jpg&q=80&w=500&auto=format&fit=crop&crop=faces',
+                bio: 'David oversees on-site crews and installation details, bringing hands-on roofing experience to repairs, replacements, and final inspections.',
+              },
             ].map((member, idx) => (
               <AnimatedSection key={idx} direction="up" delay={idx * 150}>
-                <div className="p-8 rounded-lg glow-card h-full flex flex-col justify-between">
-                  <div>
+                <div className="overflow-hidden rounded-2xl glow-card h-full text-left">
+                  <div className="relative h-64 overflow-hidden border-b border-border">
+                    <img
+                      src={member.image}
+                      alt={`Portrait of ${member.name}`}
+                      className={`h-full w-full transition-transform duration-500 hover:scale-105 ${
+                        idx === 0
+                          ? 'object-cover object-top'
+                          : 'object-cover object-top'
+                      }`}
+                    />
+                  </div>
+                  <div className="p-7">
                     <h3 className="text-xl font-bold mb-1">{member.name}</h3>
                     <p className="text-accent font-semibold mb-4">{member.role}</p>
+                    <p className="text-sm text-foreground/70 leading-relaxed">{member.bio}</p>
                   </div>
-                  <p className="text-sm text-foreground/70 border-t border-border pt-4 mt-2">{member.exp} experience</p>
                 </div>
               </AnimatedSection>
             ))}

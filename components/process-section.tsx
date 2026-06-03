@@ -1,8 +1,8 @@
 'use client'
 
+import { useEffect, useRef, useState } from 'react'
 import {
   Calendar,
-  ChevronRight,
   ClipboardCheck,
   FileText,
   Sparkles,
@@ -43,8 +43,30 @@ const processSteps: {
 ]
 
 export function ProcessSection() {
+  const sectionRef = useRef<HTMLElement | null>(null)
+  const [hasStarted, setHasStarted] = useState(false)
+
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section || hasStarted) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasStarted(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.35 }
+    )
+
+    observer.observe(section)
+
+    return () => observer.disconnect()
+  }, [hasStarted])
+
   return (
-    <section className="relative w-full overflow-x-hidden py-20 sm:py-28 border-y border-border">
+    <section ref={sectionRef} className="relative w-full overflow-x-hidden py-20 sm:py-28 border-y border-border">
       <div
         className="absolute inset-0 bg-gradient-to-b from-card via-muted/30 to-card"
         aria-hidden
@@ -68,72 +90,61 @@ export function ProcessSection() {
           </div>
         </AnimatedSection>
 
-        <div
-          className="process-flow-line hidden lg:block absolute left-[12.5%] right-[12.5%] top-[calc(50%+2rem)] h-0.5 -translate-y-1/2"
-          aria-hidden
-        />
+        <div className={`process-switch-panel relative mx-auto max-w-5xl rounded-3xl border border-accent/20 bg-background/35 p-5 sm:p-8 shadow-[0_0_40px_rgba(255,140,66,0.1)] backdrop-blur-sm ${hasStarted ? 'process-is-active' : ''}`}>
+          <div className="process-vertical-track absolute left-[3.75rem] sm:left-[5.5rem] top-12 bottom-12 w-1.5 rounded-full" aria-hidden />
+          <div className="process-vertical-flow absolute left-[3.75rem] sm:left-[5.5rem] top-12 bottom-12 w-1.5 rounded-full" aria-hidden />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-5 relative pl-5 md:pl-0">
-          {processSteps.map((item, idx) => {
-            const Icon = item.icon
-            const directions = ['left', 'up', 'right', 'up'] as const
+          <div className="relative space-y-7 sm:space-y-8">
+            {processSteps.map((item, idx) => {
+              const Icon = item.icon
+              const stepNumber = idx + 1
 
-            return (
-              <AnimatedSection
-                key={item.step}
-                direction={directions[idx] ?? 'up'}
-                delay={idx * 120}
-                className="relative h-full"
-              >
-                <div
-                  className="lg:hidden absolute -left-1 top-8 w-3 h-3 rounded-full bg-accent process-timeline-dot z-10"
-                  aria-hidden
-                />
-
-                <article className="process-card group relative h-full min-h-[240px] flex flex-col rounded-xl glow-card bg-card/80 backdrop-blur-sm px-6 pt-12 pb-6 text-center border border-border/80 transition-all duration-500 hover:-translate-y-1">
-                  <span
-                    className="process-step-badge absolute top-4 right-4 text-3xl font-bold font-mono text-accent/50 select-none transition-colors duration-300 group-hover:text-accent"
-                    style={{ animationDelay: `${idx * 0.4}s` }}
-                  >
-                    {item.step}
-                  </span>
-
-                  <div className="process-icon-ring w-14 h-14 rounded-full bg-accent/10 border border-accent/30 text-accent flex items-center justify-center mx-auto mb-5 transition-all duration-500 group-hover:scale-110 group-hover:border-accent/70 group-hover:bg-accent/20">
-                    <Icon
-                      size={24}
-                      className="animate-float"
-                      style={{
-                        animationDelay: `${idx * 0.35}s`,
-                        animationDuration: '3.5s',
-                      }}
-                    />
-                  </div>
-
-                  <h3 className="text-lg font-bold mb-2 text-foreground transition-colors duration-300 group-hover:text-accent">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-foreground/70 leading-relaxed flex-1">
-                    {item.desc}
-                  </p>
-
-                  <div className="mt-5 pt-4 border-t border-border/60">
-                    <span className="text-xs font-medium uppercase tracking-wider text-accent/80 group-hover:text-accent transition-colors">
-                      Step {item.step}
-                    </span>
-                  </div>
-
-                  {idx < processSteps.length - 1 && (
-                    <div
-                      className="hidden lg:flex absolute top-1/2 -right-3 -translate-y-1/2 z-20 w-7 h-7 items-center justify-center rounded-full bg-card border border-accent/30 text-accent shadow-sm process-connector-arrow"
-                      aria-hidden
-                    >
-                      <ChevronRight size={14} />
+              return (
+                <AnimatedSection
+                  key={item.step}
+                  direction="up"
+                  delay={idx * 120}
+                  className="relative z-10"
+                >
+                  <article className="group grid grid-cols-[5rem_1fr] sm:grid-cols-[7rem_1fr] gap-5 sm:gap-7">
+                    <div className="relative flex justify-center pt-2">
+                      <div
+                        className="process-number-circle relative flex h-20 w-20 items-center justify-center overflow-hidden rounded-full border-2 border-accent bg-card text-4xl font-bold text-accent shadow-[0_0_24px_rgba(255,140,66,0.35)]"
+                        style={{ animationDelay: `${idx * 0.65}s` }}
+                      >
+                        <span className="process-number-fill absolute inset-0" aria-hidden />
+                        <span className="relative z-10 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.75)]">{stepNumber}</span>
+                      </div>
                     </div>
-                  )}
-                </article>
-              </AnimatedSection>
-            )
-          })}
+
+                    <div
+                      className="process-card process-step-card relative rounded-2xl border border-border/80 bg-card/85 p-6 sm:p-7 text-left backdrop-blur-sm transition-all duration-500 group-hover:-translate-y-1 group-hover:border-accent/40 group-hover:shadow-[0_0_28px_rgba(255,140,66,0.16)]"
+                      style={{ animationDelay: `${idx * 0.65}s` }}
+                    >
+                      <div className="process-selection-caret absolute -left-3 top-1/2 h-6 w-6 -translate-y-1/2 rotate-45 rounded-sm bg-accent opacity-0 shadow-[0_0_20px_rgba(255,140,66,0.75)]" aria-hidden />
+                      <div className="mb-4 flex items-center justify-between gap-4">
+                        <div>
+                          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent/75">
+                            Step {item.step}
+                          </p>
+                          <h3 className="mt-2 text-2xl font-bold text-foreground transition-colors duration-300 group-hover:text-accent">
+                            {item.title}
+                          </h3>
+                        </div>
+                        <div className="process-icon-ring flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-accent/30 bg-accent/10 text-accent transition-all duration-500 group-hover:scale-110 group-hover:border-accent/70 group-hover:bg-accent/20">
+                          <Icon size={22} />
+                        </div>
+                      </div>
+
+                      <p className="text-foreground/70 leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </article>
+                </AnimatedSection>
+              )
+            })}
+          </div>
         </div>
       </div>
     </section>

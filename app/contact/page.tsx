@@ -27,8 +27,16 @@ export default function Contact() {
   return (
     <>
       {/* Header */}
-      <section className="w-full py-16 sm:py-24 bg-gradient-to-b from-card to-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative w-full overflow-hidden py-16 sm:py-24 bg-gradient-to-b from-card to-background">
+        <img
+          src="https://images.unsplash.com/photo-1758520144864-fb42371d9e60?fm=jpg&q=80&w=1800&auto=format&fit=crop"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover object-center opacity-60"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-card/55 via-background/30 to-background/75" />
+        <div className="absolute inset-0 bg-accent/10 mix-blend-overlay" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection direction="up">
             <h1 className="text-5xl font-bold mb-4 text-balance">Get in Touch</h1>
             <p className="text-xl text-foreground/70 text-balance">
@@ -156,30 +164,6 @@ export default function Contact() {
               </form>
             </AnimatedSection>
           </div>
-        </div>
-      </section>
-
-      {/* Service Area Map Placeholder */}
-      <section className="w-full py-16 sm:py-24 bg-card border-t border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection direction="up">
-            <h2 className="text-4xl font-bold text-center mb-8 text-balance">Our Service Area</h2>
-          </AnimatedSection>
-          
-          <AnimatedSection direction="up" delay={150}>
-            <div className="relative h-96 rounded-lg overflow-hidden border border-border bg-slate-900 shadow-lg">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,140,66,0.15)_0%,transparent_70%)]" />
-              <div className="w-full h-full flex items-center justify-center relative z-10">
-                <div className="text-center">
-                  <div className="w-24 h-24 rounded-full border-4 border-accent mx-auto mb-4 animate-pulse-glow flex items-center justify-center bg-accent/15">
-                    <MapPin className="w-10 h-10 text-accent" />
-                  </div>
-                  <p className="text-white text-lg font-bold">30-Mile Local Service Radius</p>
-                  <p className="text-sm text-white/50 mt-2">Map placeholder - Interactive map coming soon</p>
-                </div>
-              </div>
-            </div>
-          </AnimatedSection>
         </div>
       </section>
 
