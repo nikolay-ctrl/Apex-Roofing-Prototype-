@@ -23,7 +23,6 @@ export const metadata: Metadata = {
   metadataBase: siteUrl,
   title: 'Apex Roofing | Local Roofing Services',
   description: 'Professional roofing services for residential and commercial properties. Same-day service available in your area.',
-  generator: 'v0.app',
   openGraph: {
     title: 'Apex Roofing | Local Roofing Services',
     description: 'Professional roofing services for residential and commercial properties. Same-day service available in your area.',
@@ -44,9 +43,16 @@ export const metadata: Metadata = {
     images: ['/hero-roofing.png'],
   },
   icons: {
-    icon: {
-      url: '/icon.svg',
-      type: 'image/svg+xml',
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/icon-dark-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: {
+      url: '/apple-icon.png',
+      sizes: '180x180',
+      type: 'image/png',
     },
   },
 }
