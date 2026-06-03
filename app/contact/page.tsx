@@ -67,7 +67,7 @@ export default function Contact() {
             </AnimatedSection>
             
             {submitted && (
-              <div className="mb-6 p-4 rounded-lg bg-green-100 border border-green-300 text-green-800 animate-fade-in font-medium">
+              <div className="mb-6 p-4 rounded-lg bg-green-500/10 border border-green-500/40 text-green-200 animate-fade-in font-medium">
                 Thank you! We&apos;ll get back to you soon.
               </div>
             )}

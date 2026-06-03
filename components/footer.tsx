@@ -16,7 +16,7 @@ function FooterLink({ href, label }: { href: string; label: string }) {
   return (
     <Link
       href={href}
-      className="group relative inline-block text-background/75 hover:text-accent transition-colors duration-300"
+      className="group relative inline-block text-foreground/75 hover:text-accent transition-colors duration-300"
     >
       {label}
       <span
@@ -30,7 +30,7 @@ function FooterLink({ href, label }: { href: string; label: string }) {
 function Roofline() {
   return (
     <svg
-      className="absolute top-0 left-0 w-full h-16 sm:h-20 text-background/10 pointer-events-none footer-ridge-glow"
+      className="absolute top-0 left-0 w-full h-16 sm:h-20 text-foreground/10 pointer-events-none footer-ridge-glow"
       viewBox="0 0 1200 80"
       preserveAspectRatio="none"
       aria-hidden
@@ -63,10 +63,10 @@ export function Footer() {
   }
 
   return (
-    <footer className="relative overflow-hidden text-background border-t border-background/10">
+    <footer className="relative overflow-hidden text-foreground border-t border-border">
       {/* Layered premium background */}
       <div
-        className="absolute inset-0 bg-gradient-to-b from-slate-900 via-foreground to-[oklch(0.11_0.01_260)]"
+        className="absolute inset-0 bg-gradient-to-b from-card via-background to-[oklch(0.11_0.01_260)]"
         aria-hidden
       />
       <div className="footer-shingles absolute inset-0 opacity-80" aria-hidden />
@@ -87,12 +87,12 @@ export function Footer() {
               <h3 className="font-bold text-lg mb-3 tracking-tight">
                 <span className="text-accent">Apex</span> Roofing
               </h3>
-              <p className="text-background/70 text-sm leading-relaxed max-w-xs">
+              <p className="text-foreground/70 text-sm leading-relaxed max-w-xs">
                 Professional roofing solutions for your home and business — built to last through every season.
               </p>
               <div className="mt-5 flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-                <span className="text-xs font-medium uppercase tracking-widest text-background/50">
+                <span className="text-xs font-medium uppercase tracking-widest text-foreground/50">
                   Licensed &amp; insured
                 </span>
               </div>
@@ -101,7 +101,7 @@ export function Footer() {
 
           <AnimatedSection direction="up" delay={120}>
             <div>
-              <h4 className="font-semibold mb-4 text-background/95">Quick Links</h4>
+              <h4 className="font-semibold mb-4 text-foreground/95">Quick Links</h4>
               <ul className="space-y-3 text-sm">
                 {quickLinks.map((link) => (
                   <li key={link.href}>
@@ -114,8 +114,8 @@ export function Footer() {
 
           <AnimatedSection direction="up" delay={240}>
             <div>
-              <h4 className="font-semibold mb-4 text-background/95">Contact</h4>
-              <ul className="space-y-3 text-sm text-background/75 mb-5">
+              <h4 className="font-semibold mb-4 text-foreground/95">Contact</h4>
+              <ul className="space-y-3 text-sm text-foreground/75 mb-5">
                 <li className="flex items-center gap-2.5 transition-colors hover:text-accent">
                   <Phone size={15} className="text-accent/80 shrink-0" />
                   <a href="tel:+15551234567">(555) 123-4567</a>
@@ -129,7 +129,7 @@ export function Footer() {
                 onClick={scrollToTop}
                 variant="outline"
                 size="sm"
-                className="border-background/40 bg-background/95 text-foreground hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300"
+                className="border-accent/40 bg-card text-foreground hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300"
               >
                 <ArrowUp />
                 Back to Top
@@ -139,8 +139,8 @@ export function Footer() {
         </div>
 
         <AnimatedSection direction="fade" delay={360} duration={500}>
-          <div className="border-t border-background/15 pt-8">
-            <p className="text-center text-background/50 text-sm">
+          <div className="border-t border-border pt-8">
+            <p className="text-center text-foreground/50 text-sm">
               © 2025 Apex Roofing. All rights reserved.
             </p>
           </div>

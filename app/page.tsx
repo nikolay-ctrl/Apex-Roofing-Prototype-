@@ -12,7 +12,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-foreground via-foreground/98 to-card pt-20">
+      <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-background to-card pt-20">
         <div className="absolute inset-0 opacity-15">
           <div className="absolute top-32 right-1/4 w-96 h-96 bg-accent rounded-full mix-blend-multiply filter blur-3xl animate-pulse" />
           <div className="absolute bottom-20 left-1/3 w-96 h-96 bg-secondary rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style={{animationDelay: '1s'}} />
@@ -22,7 +22,7 @@ export default function HomePage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[600px]">
             {/* Left Content */}
-            <div className="text-background space-y-6">
+            <div className="text-foreground space-y-6">
               <div className="space-y-4">
                 <AnimatedSection direction="up" delay={100}>
                   <p className="text-sm font-semibold tracking-widest text-accent uppercase">
@@ -37,7 +37,7 @@ export default function HomePage() {
               </div>
               
               <AnimatedSection direction="up" delay={300}>
-                <p className="text-xl text-background/85 text-balance leading-relaxed">
+                <p className="text-xl text-foreground/85 text-balance leading-relaxed">
                   Expert inspections, reliable repairs, and complete replacements. We&apos;re your trusted partner for all roofing needs.
                 </p>
               </AnimatedSection>
@@ -52,7 +52,7 @@ export default function HomePage() {
                   ].map((feature, i) => (
                     <div key={i} className="flex items-center gap-3">
                       <feature.icon className="w-5 h-5 text-accent" aria-hidden="true" />
-                      <span className="text-background/90 font-medium">{feature.text}</span>
+                      <span className="text-foreground/90 font-medium">{feature.text}</span>
                     </div>
                   ))}
                 </div>
@@ -71,7 +71,7 @@ export default function HomePage() {
                   <Button
                     asChild
                     size="lg"
-                    className="btn-glow-white font-semibold px-8 text-base h-12"
+                    className="btn-glow-dark font-semibold px-8 text-base h-12"
                   >
                     <Link href="/services">Explore Premium Services</Link>
                   </Button>
@@ -87,9 +87,9 @@ export default function HomePage() {
                 { number: '100%', label: 'Satisfaction Rate' },
               ].map((stat, i) => (
                 <AnimatedSection key={i} direction="right" delay={150 * (i + 1)}>
-                  <div className="group p-6 rounded-lg bg-background/5 border border-background/25 glow-card-static hover:border-accent/40 hover:bg-background/10 transition-all duration-300">
+                  <div className="group p-6 rounded-lg bg-foreground/5 border border-foreground/15 glow-card-static hover:border-accent/40 hover:bg-foreground/10 transition-all duration-300">
                     <p className="text-4xl font-bold text-accent mb-2">{stat.number}</p>
-                    <p className="text-background/80 group-hover:text-background transition-colors font-medium">{stat.label}</p>
+                    <p className="text-foreground/80 group-hover:text-foreground transition-colors font-medium">{stat.label}</p>
                   </div>
                 </AnimatedSection>
               ))}

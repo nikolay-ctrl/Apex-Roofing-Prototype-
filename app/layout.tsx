@@ -17,12 +17,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
         url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
       },
       {
         url: '/icon.svg',
@@ -39,8 +34,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="bg-background">
-      <body className="font-sans antialiased flex flex-col min-h-screen">
+    <html lang="en" className="dark bg-background" style={{ colorScheme: 'dark' }}>
+      <body className="font-sans antialiased flex flex-col min-h-screen bg-background text-foreground">
         <Header />
         <main className="flex-1">
           {children}
