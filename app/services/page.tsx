@@ -111,7 +111,7 @@ export default function Services() {
                           </li>
                         ))}
                       </ul>
-                      <div className="pointer-events-none absolute inset-x-4 bottom-4 translate-y-4 rounded-xl border border-border bg-card/95 p-5 text-left opacity-0 shadow-xl backdrop-blur-sm transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100">
+                      <div className="mt-6 rounded-xl border border-border bg-card/95 p-5 text-left shadow-xl backdrop-blur-sm transition-all duration-300 ease-out md:pointer-events-none md:absolute md:inset-x-4 md:bottom-4 md:mt-0 md:translate-y-4 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
                         <p className="text-sm text-foreground/75 leading-relaxed mb-4">
                           {service.description}
                         </p>

@@ -50,33 +50,51 @@ export function Header() {
           className="md:hidden p-2 hover:bg-accent/10 rounded-lg transition-colors"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
         >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          <span className="relative block h-6 w-6">
+            <Menu
+              size={24}
+              className={`absolute inset-0 transition-all duration-300 ${
+                menuOpen ? 'rotate-90 scale-75 opacity-0' : 'rotate-0 scale-100 opacity-100'
+              }`}
+            />
+            <X
+              size={24}
+              className={`absolute inset-0 transition-all duration-300 ${
+                menuOpen ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-75 opacity-0'
+              }`}
+            />
+          </span>
         </button>
       </nav>
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden border-t border-border bg-background/95 animate-fade-in">
-          <div className="px-4 py-4 space-y-3">
-            {navLinks.map((link) => (
+        <div className="mobile-menu-panel md:hidden border-t border-border bg-background/95 backdrop-blur-xl">
+          <div className="relative overflow-hidden px-4 py-5 space-y-3">
+            <div className="absolute -right-20 -top-20 h-44 w-44 rounded-full bg-accent/15 blur-3xl" aria-hidden />
+            {navLinks.map((link, idx) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="block py-2 text-foreground/80 hover:text-accent transition-colors"
+                className="mobile-menu-item relative block rounded-xl border border-transparent px-4 py-3 text-foreground/80 transition-all hover:border-accent/25 hover:bg-accent/10 hover:text-accent"
+                style={{ animationDelay: `${idx * 55}ms` }}
               >
                 {link.label}
               </Link>
             ))}
-            <Button
-              asChild
-              className="w-full btn-glow-accent font-semibold"
-            >
-              <Link href="/contact" onClick={() => setMenuOpen(false)}>
-                Get Free Estimate
-              </Link>
-            </Button>
+            <div className="mobile-menu-item pt-2" style={{ animationDelay: `${navLinks.length * 55}ms` }}>
+              <Button
+                asChild
+                className="w-full btn-glow-accent font-semibold"
+              >
+                <Link href="/contact" onClick={() => setMenuOpen(false)}>
+                  Get Free Estimate
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       )}

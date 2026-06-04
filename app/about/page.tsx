@@ -53,22 +53,34 @@ export default function About() {
       {/* Stats Section */}
       <section className="w-full py-16 sm:py-24 bg-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 border-y border-border divide-y md:divide-y-0 md:divide-x divide-border">
+          <div className="about-stats-panel relative overflow-hidden rounded-3xl border border-accent/25 bg-background/45 p-4 sm:p-6 shadow-[0_0_42px_rgba(255,140,66,0.12)]">
+            <div className="absolute -top-24 right-10 h-56 w-56 rounded-full bg-accent/15 blur-3xl" aria-hidden />
+            <div className="absolute -bottom-24 left-10 h-56 w-56 rounded-full bg-accent/10 blur-3xl" aria-hidden />
+
+            <div className="relative grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-border/80">
             {[
               { icon: Award, title: '20+ Years', desc: 'Industry Excellence' },
               { icon: Users, title: '5,000+', desc: 'Happy Customers' },
               { icon: Clock, title: '24/7', desc: 'Emergency Support' },
             ].map((stat, idx) => (
               <AnimatedSection key={idx} direction="up" delay={idx * 150}>
-                <div className="flex items-center justify-center gap-5 py-8 md:px-8">
-                  <stat.icon className="w-12 h-12 text-accent animate-float flex-shrink-0" style={{ animationDelay: `${idx * 0.4}s`, animationDuration: '3.8s' }} />
+                <div className="about-stat-item group relative flex items-center justify-center gap-5 px-2 py-8 md:px-8">
+                  <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl border border-accent/30 bg-accent/10 text-accent shadow-[0_0_20px_rgba(255,140,66,0.12)] transition-all duration-300 group-hover:border-accent/60 group-hover:bg-accent/15">
+                    <stat.icon className="w-9 h-9 animate-float" style={{ animationDelay: `${idx * 0.4}s`, animationDuration: '3.8s' }} />
+                  </div>
                   <div className="text-left">
                     <h3 className="text-4xl font-bold mb-1">{stat.title}</h3>
                     <p className="text-foreground/70">{stat.desc}</p>
                   </div>
+                  <span
+                    className="about-stat-line absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-accent to-transparent"
+                    aria-hidden
+                    style={{ animationDelay: `${idx * 0.25}s` }}
+                  />
                 </div>
               </AnimatedSection>
             ))}
+            </div>
           </div>
         </div>
       </section>
