@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import { AnimatedSection } from '@/components/animated-section'
 
 const quickLinks = [
   { href: '/', label: 'Home' },
@@ -75,23 +74,19 @@ export function Footer() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
         <div className="flex flex-col items-center justify-between gap-8 text-center md:flex-row md:text-left">
-          <AnimatedSection direction="up" delay={0}>
-            <Link href="/" className="font-bold text-xl text-foreground hover-scale">
-              <span className="text-accent">Apex</span> Roofing
-            </Link>
-          </AnimatedSection>
+          <Link href="/" className="font-bold text-xl text-foreground hover-scale">
+            <span className="text-accent">Apex</span> Roofing
+          </Link>
 
-          <AnimatedSection direction="up" delay={120}>
-            <nav aria-label="Footer navigation">
-              <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm">
-                {quickLinks.map((link) => (
-                  <li key={link.href}>
-                    <FooterLink href={link.href} label={link.label} />
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </AnimatedSection>
+          <nav aria-label="Footer navigation">
+            <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm">
+              {quickLinks.map((link) => (
+                <li key={link.href}>
+                  <FooterLink href={link.href} label={link.label} />
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </div>
     </footer>
