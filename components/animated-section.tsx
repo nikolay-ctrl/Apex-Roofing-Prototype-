@@ -15,7 +15,7 @@ export function AnimatedSection({
   className = '',
   delay = 0,
   direction = 'up',
-  duration = 600,
+  duration = 720,
 }: AnimatedSectionProps) {
   const ref = useRef<HTMLDivElement>(null)
   const [isVisible, setIsVisible] = useState(false)
@@ -23,11 +23,19 @@ export function AnimatedSection({
   useEffect(() => {
     if (typeof window === 'undefined') return
 
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReducedMotion) {
+      setIsVisible(true)
+      return
+    }
+
     // Fallback for browsers/environments without IntersectionObserver
     if (!('IntersectionObserver' in window)) {
       setIsVisible(true)
       return
     }
+
+    const isDesktop = window.matchMedia('(min-width: 768px)').matches
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -37,8 +45,8 @@ export function AnimatedSection({
         }
       },
       {
-        threshold: 0.05,
-        rootMargin: '0px 0px -50px 0px',
+        threshold: isDesktop ? 0.12 : 0.08,
+        rootMargin: isDesktop ? '0px 0px -8% 0px' : '0px 0px -36px 0px',
       }
     )
 
@@ -54,37 +62,38 @@ export function AnimatedSection({
     }
   }, [])
 
-  const getDirectionClass = () => {
+  const getInitialTransform = () => {
     switch (direction) {
       case 'up':
-        return 'translate-y-8 opacity-0'
+        return 'translate3d(0, 28px, 0)'
       case 'down':
-        return '-translate-y-8 opacity-0'
+        return 'translate3d(0, -28px, 0)'
       case 'left':
-        return 'translate-x-8 opacity-0'
+        return 'translate3d(28px, 0, 0)'
       case 'right':
-        return '-translate-x-8 opacity-0'
+        return 'translate3d(-28px, 0, 0)'
       case 'fade':
-        return 'opacity-0'
+        return 'translate3d(0, 0, 0)'
       default:
-        return 'translate-y-8 opacity-0'
+        return 'translate3d(0, 28px, 0)'
     }
   }
 
   return (
     <div
       ref={ref}
-      className={`transition-all ease-out ${className}`}
+      className={className}
       style={{
+        transitionProperty: 'opacity, transform',
+        transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
         transitionDuration: `${duration}ms`,
-        transitionDelay: `${delay}ms`,
-        transform: isVisible ? 'translate(0, 0)' : undefined,
+        transitionDelay: isVisible ? `${delay}ms` : '0ms',
+        transform: isVisible ? 'translate3d(0, 0, 0)' : getInitialTransform(),
         opacity: isVisible ? 1 : 0,
+        willChange: isVisible ? 'auto' : 'opacity, transform',
       }}
     >
-      <div className={!isVisible ? getDirectionClass() : 'transition-all duration-300'}>
-        {children}
-      </div>
+      {children}
     </div>
   )
 }

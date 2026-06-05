@@ -3,13 +3,23 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Phone, Mail, MapPin } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AnimatedSection } from '@/components/animated-section'
 import { CtaBanner } from '@/components/cta-banner'
+
+const serviceOptions = ['inspection', 'repair', 'replacement', 'other']
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', service: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
+
+  useEffect(() => {
+    const selectedService = new URLSearchParams(window.location.search).get('service')
+
+    if (selectedService && serviceOptions.includes(selectedService)) {
+      setFormData((prev) => ({ ...prev, service: selectedService }))
+    }
+  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -85,7 +95,7 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div className="max-w-2xl mx-auto">
+          <div id="contact-form" className="max-w-2xl mx-auto scroll-mt-24">
             <AnimatedSection direction="up">
               <h2 className="text-3xl font-bold text-center mb-8 text-balance">Send us a Message</h2>
             </AnimatedSection>

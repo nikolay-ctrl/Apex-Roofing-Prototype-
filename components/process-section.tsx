@@ -71,9 +71,9 @@ export function ProcessSection() {
         className="absolute inset-0 bg-gradient-to-b from-card via-muted/30 to-card"
         aria-hidden
       />
-      <div className="process-section-grid absolute inset-0 opacity-70" aria-hidden />
-      <div className="absolute inset-0 opacity-40" aria-hidden>
-        <div className="process-section-orb absolute top-1/4 -left-20 w-72 h-72 bg-accent/20 rounded-full blur-3xl" />
+      <div className="process-section-grid absolute inset-0 opacity-35" aria-hidden />
+      <div className="absolute inset-0 opacity-20" aria-hidden>
+        <div className="process-section-orb absolute top-1/4 -left-20 w-72 h-72 bg-accent/10 rounded-full blur-3xl" />
         <div className="process-section-orb-delayed absolute bottom-1/4 -right-16 w-80 h-80 bg-secondary/10 rounded-full blur-3xl" />
       </div>
 
@@ -90,7 +90,7 @@ export function ProcessSection() {
           </div>
         </AnimatedSection>
 
-        <div className={`process-switch-panel relative mx-auto max-w-5xl rounded-3xl border border-accent/20 bg-background/35 p-3 sm:p-8 shadow-[0_0_40px_rgba(255,140,66,0.1)] backdrop-blur-sm ${hasStarted ? 'process-is-active' : ''}`}>
+        <div className={`process-switch-panel relative mx-auto max-w-5xl rounded-3xl border border-border/80 bg-background/35 p-3 sm:p-8 backdrop-blur-sm ${hasStarted ? 'process-is-active' : ''}`}>
           <div className="process-vertical-track absolute left-[2.45rem] sm:left-[5.5rem] top-10 sm:top-12 bottom-10 sm:bottom-12 w-1 sm:w-1.5 rounded-full" aria-hidden />
           <div className="process-vertical-flow absolute left-[2.45rem] sm:left-[5.5rem] top-10 sm:top-12 bottom-10 sm:bottom-12 w-1 sm:w-1.5 rounded-full" aria-hidden />
 
@@ -109,7 +109,7 @@ export function ProcessSection() {
                   <article className="group grid grid-cols-[3.5rem_1fr] sm:grid-cols-[7rem_1fr] gap-3 sm:gap-7">
                     <div className="relative flex justify-center pt-2">
                       <div
-                        className="process-number-circle relative flex h-14 w-14 sm:h-20 sm:w-20 items-center justify-center overflow-hidden rounded-full border-2 border-accent bg-card text-2xl sm:text-4xl font-bold text-accent shadow-[0_0_24px_rgba(255,140,66,0.35)]"
+                        className="process-number-circle relative flex h-14 w-14 sm:h-20 sm:w-20 items-center justify-center overflow-hidden rounded-full border border-accent/45 bg-card text-2xl sm:text-4xl font-bold text-accent shadow-[0_0_14px_rgba(255,140,66,0.16)]"
                         style={{ animationDelay: `${idx * 0.65}s` }}
                       >
                         <span className="process-number-fill absolute inset-0" aria-hidden />
@@ -118,10 +118,10 @@ export function ProcessSection() {
                     </div>
 
                     <div
-                      className="process-card process-step-card relative rounded-2xl border border-border/80 bg-card/85 p-4 sm:p-7 text-left backdrop-blur-sm transition-all duration-500 group-hover:-translate-y-1 group-hover:border-accent/40 group-hover:shadow-[0_0_28px_rgba(255,140,66,0.16)]"
+                      className="process-card process-step-card relative rounded-2xl border border-border/80 bg-card/85 p-4 sm:p-7 text-left backdrop-blur-sm transition-all duration-500 group-hover:border-accent/30 group-hover:shadow-[0_12px_28px_rgba(0,0,0,0.18)]"
                       style={{ animationDelay: `${idx * 0.65}s` }}
                     >
-                      <div className="process-selection-caret absolute -left-2 sm:-left-3 top-1/2 h-4 w-4 sm:h-6 sm:w-6 -translate-y-1/2 rotate-45 rounded-sm bg-accent opacity-0 shadow-[0_0_20px_rgba(255,140,66,0.75)]" aria-hidden />
+                      <div className="process-selection-caret absolute -left-2 sm:-left-3 top-1/2 h-4 w-4 sm:h-6 sm:w-6 -translate-y-1/2 rotate-45 rounded-sm bg-accent/70 opacity-0" aria-hidden />
                       <div className="mb-4 flex items-center justify-between gap-3 sm:gap-4">
                         <div>
                           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent/75">
@@ -131,7 +131,7 @@ export function ProcessSection() {
                             {item.title}
                           </h3>
                         </div>
-                        <div className="process-icon-ring flex h-10 w-10 sm:h-12 sm:w-12 flex-shrink-0 items-center justify-center rounded-full border border-accent/30 bg-accent/10 text-accent transition-all duration-500 group-hover:scale-110 group-hover:border-accent/70 group-hover:bg-accent/20">
+                        <div className="process-icon-ring flex h-10 w-10 sm:h-12 sm:w-12 flex-shrink-0 items-center justify-center rounded-full border border-accent/25 bg-accent/10 text-accent transition-all duration-500 group-hover:border-accent/45 group-hover:bg-accent/10">
                           <Icon className="h-5 w-5 sm:h-[22px] sm:w-[22px]" />
                         </div>
                       </div>
