@@ -7,8 +7,15 @@ import { Footer } from '@/components/footer'
 import { ScrollToTop } from '@/components/scroll-to-top'
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const geistSans = Geist({
+  subsets: ['latin'],
+  variable: '--font-geist-sans',
+})
+
+const geistMono = Geist_Mono({
+  subsets: ['latin'],
+  variable: '--font-geist-mono',
+})
 
 const siteUrl = new URL(
   process.env.NEXT_PUBLIC_SITE_URL ??
@@ -63,7 +70,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="dark bg-background" style={{ colorScheme: 'dark' }}>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} dark bg-background`}
+      style={{ colorScheme: 'dark' }}
+    >
       <body className="font-sans antialiased flex flex-col min-h-screen bg-background text-foreground">
         <Header />
         <main className="flex-1">
